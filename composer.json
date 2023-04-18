@@ -1,0 +1,33 @@
+{
+  "name": "oberfeld/freiraum",
+  "description": "Zeigt die nächsten Reservationen eines Raumes (iCal-Feed) als einfach Webseite an",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Oberfeld\\Freiraum\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Christian Studer",
+      "email": "cstuder@existenz.ch"
+    }
+  ],
+  "require-dev": {
+    "pds/skeleton": "^1.0",
+    "phpunit/phpunit": "^10.1"
+  },
+  "scripts": {
+    "test": "phpunit tests/",
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "php -S localhost:8000 -t public bin/router.php"
+    ],
+    "deploy-LIVE": "git push . main:LIVE && git push origin LIVE"
+  },
+  "require": {
+    "johngrogg/ics-parser": "^3.2",
+    "vlucas/phpdotenv": "^5.5"
+  }
+}
