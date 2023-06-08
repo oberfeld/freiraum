@@ -27,12 +27,15 @@ class Reservations
         $now = new \DateTimeImmutable();
 
         foreach ($this->events as $event) {
-            if ($event->dtstart <= $now && $event->dtend > $now) {
+            $start = new \DateTimeImmutable($event->dtstart);
+            $end = new \DateTimeImmutable($event->dtend);
+
+            if ($start <= $now && $end > $now) {
                 return 0;
             }
 
-            if ($event->dtstart > $now) {
-                return intval(round(($event->dtstart->getTimestamp() - $now->getTimestamp()) / 60));
+            if ($start > $now) {
+                return intval(round(($start->getTimestamp() - $now->getTimestamp()) / 60));
             }
         }
 
@@ -47,13 +50,16 @@ class Reservations
         $events = [];
 
         foreach ($this->events as $event) {
+            $start = new \DateTimeImmutable($event->dtstart);
+            $end = new \DateTimeImmutable($event->dtend);
+
             // Already started?
-            if ($event->dtstart <= $now && $event->dtend > $now) {
+            if ($start <= $now && $end > $now) {
                 $events[] = $event;
             }
 
             // Starts in the future?
-            if ($event->dtstart > $now) {
+            if ($start > $now) {
                 $events[] = $event;
             }
 

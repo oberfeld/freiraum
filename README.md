@@ -22,17 +22,11 @@ Simples PHP 8. Minimalistisch. Keine Authentifizierung, keine Datenbank, keine B
 
 Einmalig: `composer install`
 
-Lokales Entwickeln: `composer run serve` -> <http://localhost:8000>
+Lokales Entwickeln: `composer run serve` -> <http://localhost:8000/RAUMNAME>
 
 ## Testing
 
 `composer test`
-
-## Deployment
-
-Einmalig: `secrethubwarden` (Aktualisiert die Secrets auf GitHub, siehe [SecretHubWarden](https://github.com/cstuder/secrethubwarden))
-
-`composer run deploy-LIVE`
 
 ## License
 

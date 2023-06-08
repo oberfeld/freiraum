@@ -10,13 +10,21 @@ class Roompage
 {
     public static function showRoom(string $name, Reservations $reservations): void
     {
-        echo "Raum $name, frei in " . $reservations->getMinutesUntilNextEvent() . " Minuten";
+        echo "Raum $name, frei in den nächsten " . $reservations->getMinutesUntilNextEvent() . " Minuten";
 
-        var_dump($reservations->getNextEvents());
+        foreach ($reservations->getNextEvents() as $event) {
+            echo "<br>";
+            echo $event->summary;
+            echo "<br>";
+            echo $event->dtstart;
+            echo "<br>";
+            echo $event->dtend;
+            echo "<br>";
+        }
     }
 
     public static function roomNotFound(): void
     {
-        echo "Bitte gültigen Raum eingeben.";
+        echo "Bitte gültigen Raum in der Adresse angeben.";
     }
 }

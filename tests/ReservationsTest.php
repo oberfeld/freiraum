@@ -114,11 +114,9 @@ final class ReservationsTest extends TestCase
         $endTimestamp = time() + $endTimestampRelative;
 
         $event = new Event();
-        $event->dtstart = \DateTimeImmutable::createFromFormat(self::DATE_TIME_FORMAT, date(self::DATE_TIME_FORMAT, $startTimestamp));
-        $event->dtend = \DateTimeImmutable::createFromFormat(self::DATE_TIME_FORMAT, date(self::DATE_TIME_FORMAT, $endTimestamp));
+        $event->dtstart = date(self::DATE_TIME_FORMAT, $startTimestamp);
+        $event->dtend = date(self::DATE_TIME_FORMAT, $endTimestamp);
         $event->summary = $summary;
-
-        var_dump($event);
 
         return $event;
     }

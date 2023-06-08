@@ -16,8 +16,5 @@ if ($roomName === null || $roomIcalUrl === null) {
     \Oberfeld\Freiraum\Output\Roompage::roomNotFound();
 } else {
     $reservations = new \Oberfeld\Freiraum\Reservations($roomIcalUrl);
-
-    var_dump($reservations);
-
     \Oberfeld\Freiraum\Output\Roompage::showRoom($roomName, $reservations);
 }
