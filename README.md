@@ -1,6 +1,6 @@
 # Freiraum
 
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 Zeigt die nächsten Reservationen eines Raumes (iCal-Feed) als einfach Webseite an.
 
@@ -30,6 +30,10 @@ Parallel dazu: `composer run tailwind`
 ## Testing
 
 `composer test`
+
+## Deployment
+
+`composer run deploy-LIVE` -> Pusht den aktuellen `main`-Branch auf den Server.
 
 ## Credits
 
