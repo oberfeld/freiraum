@@ -24,6 +24,10 @@
       "Composer\\Config::disableProcessTimeout",
       "php -S localhost:8000 -t public bin/router.php"
     ],
+    "tailwind": [
+      "Composer\\Config::disableProcessTimeout",
+      "npx tailwindcss -i ./resources/freiraum.css -o ./public/dist/freiraum.css --watch"
+    ],
     "deploy-LIVE": "git push . main:LIVE && git push origin LIVE"
   },
   "require": {

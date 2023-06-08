@@ -21,12 +21,22 @@ Simples PHP 8. Minimalistisch. Keine Authentifizierung, keine Datenbank, keine B
 ## Entwicklung
 
 Einmalig: `composer install`
+Einmalig: `npm install`
 
 Lokales Entwickeln: `composer run serve` -> <http://localhost:8000/RAUMNAME>
+
+Parallel dazu: `composer run tailwind`
 
 ## Testing
 
 `composer test`
+
+## Credits
+
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin)
+- [johngrogg/ics-parser](https://github.com/u01jmg3/ics-parser)
+- [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv)
 
 ## License
 

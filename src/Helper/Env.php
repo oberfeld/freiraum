@@ -8,6 +8,8 @@ use Dotenv\Dotenv;
 
 /**
  * Env helper
+ * 
+ * Easy access to the .env values for this project
  */
 class Env
 {
