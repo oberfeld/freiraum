@@ -16,7 +16,7 @@ class Timerange
         }
 
         if ($minutes < 60 * 12) {
-            return "Frei in den nächsten " . round($minutes / 60) . " Stunden.";
+            return "Frei in den nächsten " . floor($minutes / 60) . " Stunden.";
         }
 
         return "Frei in der nächsten Zeit.";

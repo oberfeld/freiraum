@@ -27,7 +27,7 @@ class Roompage
         }
 
         // Next events
-        $content .= "<h2>Anstehende Reservationen</h2>";
+        $content .= "<h2>Aktuelle Reservationen</h2>";
         $content .= "<table><tbody>";
 
         foreach ($reservations->getNextEvents() as $events) {

@@ -110,12 +110,14 @@ final class ReservationsTest extends TestCase
 
     private function createEvent($startTimestampRelative, $endTimestampRelative, $summary = 'n/a'): Event
     {
+        $timezone = new DateTimeZone('Europe/Zurich');
+
         $startTimestamp = time() + $startTimestampRelative;
         $endTimestamp = time() + $endTimestampRelative;
 
         $event = new Event();
-        $event->dtstart = date(self::DATE_TIME_FORMAT, $startTimestamp);
-        $event->dtend = date(self::DATE_TIME_FORMAT, $endTimestamp);
+        $event->dtstart = (new \DateTime("@{$startTimestamp}"))->setTimezone($timezone)->format(self::DATE_TIME_FORMAT);
+        $event->dtend = (new \DateTime("@{$endTimestamp}"))->setTimezone($timezone)->format(self::DATE_TIME_FORMAT);
         $event->summary = $summary;
 
         return $event;

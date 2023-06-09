@@ -9,12 +9,15 @@ use ICal\ICal;
 class Reservations
 {
     protected array $events = [];
+    protected \DateTimezone $timezone;
 
     public function __construct(?string $roomIcalUrl = null)
     {
         if ($roomIcalUrl !== null) {
             $this->events = (new Ical($roomIcalUrl))->events();
         }
+
+        $this->timezone = new \DateTimezone('Europe/Zurich');
     }
 
     public function setEvents(array $events): void
@@ -27,8 +30,8 @@ class Reservations
         $now = new \DateTimeImmutable();
 
         foreach ($this->events as $event) {
-            $start = new \DateTimeImmutable($event->dtstart);
-            $end = new \DateTimeImmutable($event->dtend);
+            $start = new \DateTimeImmutable($event->dtstart, $this->timezone);
+            $end = new \DateTimeImmutable($event->dtend, $this->timezone);
 
             if ($start <= $now && $end > $now) {
                 return 0;
@@ -50,8 +53,8 @@ class Reservations
         $events = [];
 
         foreach ($this->events as $event) {
-            $start = new \DateTimeImmutable($event->dtstart);
-            $end = new \DateTimeImmutable($event->dtend);
+            $start = new \DateTimeImmutable($event->dtstart, $this->timezone);
+            $end = new \DateTimeImmutable($event->dtend, $this->timezone);
 
             // Already started?
             if ($start <= $now && $end > $now) {
