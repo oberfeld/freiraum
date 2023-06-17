@@ -32,6 +32,12 @@ jobs:
       - name: Run test suite
         run: composer run test
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+          cache: 'npm'
+      - run: npx tailwindcss -i ./resources/freiraum.css -o ./public/dist/freiraum.css --minify
+
       - name: rsync deployments
         run: |
           SSH_PATH="$HOME/.ssh"
