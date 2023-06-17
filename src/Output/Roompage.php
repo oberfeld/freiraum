@@ -41,6 +41,8 @@ class Roompage
 
         $content .= "</tbody></table>";
 
+        $content .= "<p>Du willst reservieren? Den Link findest Du in der Infomappe, welche im Raum aufliegt.</p>";
+
         Html::outputContent($content);
     }
 
