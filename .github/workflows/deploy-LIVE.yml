@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: 19
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
       - run: npx tailwindcss -i ./resources/freiraum.css -o ./public/dist/freiraum.css --minify
 
       - name: rsync deployments
