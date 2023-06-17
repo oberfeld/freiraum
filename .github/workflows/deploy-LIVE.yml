@@ -1,0 +1,53 @@
+name: Build n Deploy
+
+on:
+  push:
+    branches: ["LIVE"]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run test suite
+        run: composer run test
+
+      - name: rsync deployments
+        run: |
+          SSH_PATH="$HOME/.ssh"
+          mkdir "$SSH_PATH"
+          echo "${{ secrets.PRIVATE_KEY }}" > "$SSH_PATH/deploy_key"
+          echo "$DOT_ENV" > $GITHUB_WORKSPACE/.env
+          chmod 600 "$SSH_PATH/deploy_key"
+          sh -c "rsync -v -r -e 'ssh -i $SSH_PATH/deploy_key -o StrictHostKeyChecking=no' \
+             --include=public/ \
+             --include=vendor/ \
+             --include=resources/ \
+             --include=src/ \
+             --include=.env \
+             --exclude=/* \
+             $GITHUB_WORKSPACE/ $SSH_DESTINATION"
+        env:
+          DOT_ENV: ${{ secrets.FREIRAUM_DOTENV }}
+          SSH_DESTINATION: ${{ secrets.FREIRAUM_SSH_DESTINATION }}
+          PRIVATE_KEY: ${{ secrets.FREIRAUM_PRIVATE_KEY }}
