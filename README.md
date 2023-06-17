@@ -41,6 +41,7 @@ Parallel dazu: `composer run tailwind`
 - [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin)
 - [johngrogg/ics-parser](https://github.com/u01jmg3/ics-parser)
 - [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv)
+- [Door icon by Box Icons](https://www.iconfinder.com/search/icons?family=boxicons-solid)
 
 ## License
 
