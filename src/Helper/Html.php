@@ -12,8 +12,9 @@ namespace Oberfeld\Freiraum\Helper;
  */
 class Html
 {
-  public static function outputContent(string $content): void
+  public static function outputContent(string $content, string $title = null): void
   {
+    $title = isset($title) ? "{$title} &ndash; Freiraum" : 'Freiraum';
     require_once __DIR__ . '/../../resources/html5.php';
   }
 

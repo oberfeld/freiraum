@@ -43,7 +43,7 @@ class Roompage
 
         $content .= "<p>Du willst reservieren? Den Link findest Du in der Infomappe, welche im Raum aufliegt.</p>";
 
-        Html::outputContent($content);
+        Html::outputContent($content, $name);
     }
 
     private static function formatDate(string $date): string
