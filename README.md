@@ -2,7 +2,9 @@
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-Zeigt die nächsten Reservationen eines Raumes (iCal-Feed) als einfach Webseite an.
+Zeigt die nächsten Reservationen eines Raumes (iCal-Feed) als einfache Webseite an:
+
+![Screenshot Freiraum](docs/screenshot.png)
 
 Gestaltet für die Gemeinschaftsräume der [Wohnbaugenossenschaft Oberfeld](https://wohnenimoberfeld.ch).
 
@@ -21,6 +23,7 @@ Simples PHP 8. Minimalistisch. Keine Authentifizierung, keine Datenbank, keine B
 ## Entwicklung
 
 Einmalig: `composer install`
+
 Einmalig: `npm install`
 
 Lokales Entwickeln: `composer run serve` -> <http://localhost:8000/RAUMNAME>
