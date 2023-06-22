@@ -15,6 +15,10 @@ $roomIcalUrl = \Oberfeld\Freiraum\Helper\Env::getRoomIcalUrl($room);
 if ($roomName === null || $roomIcalUrl === null) {
     \Oberfeld\Freiraum\Output\Roompage::roomNotFound();
 } else {
-    $reservations = new \Oberfeld\Freiraum\Reservations($roomIcalUrl);
-    \Oberfeld\Freiraum\Output\Roompage::showRoom($roomName, $reservations);
+    try {
+        $reservations = new \Oberfeld\Freiraum\Reservations($roomIcalUrl);
+        \Oberfeld\Freiraum\Output\Roompage::showRoom($roomName, $reservations);
+    } catch (Exception $e) {
+        \Oberfeld\Freiraum\Output\Error::error();
+    }
 }
