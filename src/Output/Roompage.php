@@ -48,7 +48,16 @@ class Roompage
 
     private static function formatDate(string $date): string
     {
-        return date('j.n. H:i', strtotime($date));
+        $date = new \DateTimeImmutable($date, new \DateTimeZone('Europe/Zurich'));
+
+        // Is date today?
+        if ($date->format('Y-m-d') == (new \DateTimeImmutable())->format('Y-m-d')) {
+            return 'Heute, ' . $date->format('H:i');
+        } else if($date->format('Y-m-d') == (new \DateTimeImmutable())->modify('+1 day')->format('Y-m-d')) {
+            return 'Morgen, ' . $date->format('H:i');
+        } else {
+            return $date->format('d.m. H:i');
+        }
     }
 
     public static function roomNotFound(): void
