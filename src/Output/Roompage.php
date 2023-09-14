@@ -50,8 +50,10 @@ class Roompage
     {
         $date = new \DateTimeImmutable($date, new \DateTimeZone('Europe/Zurich'));
 
-        // Is date today?
-        if ($date->format('Y-m-d') == (new \DateTimeImmutable())->format('Y-m-d')) {
+        // Get some date strings: Yesterday, today, tomorrow
+        if($date->format('Y-m-d') == (new \DateTimeImmutable())->modify('-1 day')->format('Y-m-d')) {
+            return 'Gestern, ' . $date->format('H:i');
+        } else if ($date->format('Y-m-d') == (new \DateTimeImmutable())->format('Y-m-d')) {
             return 'Heute, ' . $date->format('H:i');
         } else if($date->format('Y-m-d') == (new \DateTimeImmutable())->modify('+1 day')->format('Y-m-d')) {
             return 'Morgen, ' . $date->format('H:i');
